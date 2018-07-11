@@ -14,9 +14,11 @@ namespace CSharpVSTS.Tests
         public void CallHttp()
         {
             HttpContext context = new DefaultHttpContext();
-            HttpRequest request = new DefaultHttpRequest(context);
-            request.Method = "GET";
-            request.Body = null;
+            HttpRequest request = new DefaultHttpRequest(context)
+            {
+                Method = "GET",
+                Body = null
+            };
 
             ILogger nullLogger = new NullLogger<string>();
             var response = Function1.Run(request, nullLogger) as OkObjectResult;
